@@ -94,6 +94,7 @@ pub mod double_comparison;
 pub mod double_parens;
 pub mod drop_forget_ref;
 pub mod duration_subsec;
+pub mod division_by_zero;
 pub mod else_if_without_else;
 pub mod empty_enum;
 pub mod entry;
@@ -360,6 +361,7 @@ pub fn register_plugins(reg: &mut rustc_plugin::Registry<'_>, conf: &Conf) {
     reg.register_late_lint_pass(box types::CharLitAsU8);
     reg.register_late_lint_pass(box vec::Pass);
     reg.register_late_lint_pass(box drop_forget_ref::Pass);
+    reg.register_late_lint_pass(box division_by_zero::DivisionByZero);
     reg.register_late_lint_pass(box empty_enum::EmptyEnum);
     reg.register_late_lint_pass(box types::AbsurdExtremeComparisons);
     reg.register_late_lint_pass(box types::InvalidUpcastComparisons);
